@@ -3,7 +3,7 @@ import pytest
 def test_1():
     url = "http://flask_server:5000/"
     resp = requests.get(url).text
-    print("Testing now")
+    print("Testing now for real")
     assert resp == 'test_passed'
 
 test_1()
