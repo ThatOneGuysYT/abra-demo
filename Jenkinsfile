@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sh '''
                 pip install docker  --break-system-packages
-                docker build -t blackbox -f Dockerfile_blackbox
+                docker build -t blackbox -f Dockerfile_blackbox .
                 '''
             }
         }
