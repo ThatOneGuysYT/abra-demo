@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('run test') {
+        stage('build') {
             steps {
                 sh '''
                 pip install requests --break-system-packages
@@ -15,6 +15,13 @@ pipeline {
             steps {
                 sh '''
                 python3 -m pytest
+                '''
+            }
+        }
+        stage('build container') {
+            steps {
+                sh '''
+                pip install docker
                 '''
             }
         }
