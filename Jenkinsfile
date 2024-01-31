@@ -20,7 +20,7 @@ pipeline {
         }
         stage('build container') {
             agent {
-                docker { image 'node:alpine3.19' }
+                docker { image 'node:20.11.0-alpine3.19' }
             }
             steps {
                 sh '''
