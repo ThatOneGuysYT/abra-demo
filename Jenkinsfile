@@ -24,6 +24,7 @@ pipeline {
             }
             steps {
                 sh '''
+                docker-machine regenerate-certs dev
                 pip install requests --break-system-packages
                 pip install pytest --break-system-packages
                 python3 test_file.py
