@@ -21,7 +21,8 @@ pipeline {
         stage('build container') {
             steps {
                 sh '''
-                pip install docker
+                pip install docker  --break-system-packages
+                docker build -t blackbox -f Dockerfile_blackbox
                 '''
             }
         }
