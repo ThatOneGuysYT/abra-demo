@@ -1,11 +1,10 @@
 pipeline {
     agent any
-
+    customWorkspace '/PullRequest'
     stages {
         stage('install requirements') {
             steps {
                 sh '''
-                env.JENKINS_HOME = ./PullRequest
                 pip install -r requirements.txt --break-system-packages
                 '''
             }
