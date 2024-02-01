@@ -1,8 +1,10 @@
+""" testing for the return string from the flask server """
+
 import requests
-import pytest
 def test_1():
+    """ the actual test """
     url = "http://flask_server:5000/"
-    resp = requests.get(url).text
+    resp = requests.get(url, timeout=10).text
     print("Testing now")
     assert resp == 'test_passed'
 
