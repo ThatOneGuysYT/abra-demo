@@ -2,11 +2,19 @@ pipeline {
     agent any
 
     stages {
+        stage('install requirements')
+            steps {
+                sh 'pip install -r requirements.txt --break-system-packages'
+            }
+        stage('check code')
+            steps {
+                sh '''
+                pylint test_file.py
+                '''
+            }
         stage('build') {
             steps {
                 sh '''
-                pip install requests --break-system-packages
-                pip install pytest --break-system-packages
                 python3 test_file.py
                 '''
             }
@@ -18,7 +26,7 @@ pipeline {
                 '''
             }
         }
-        stage('build container') {
+        /*stage('build container') {
             agent {
                 docker { image 'node:20.11.0-alpine3.19' }
             }
@@ -30,6 +38,6 @@ pipeline {
                 python3 test_file.py
                 '''
             }
-        }
+        }*/
     }
 }
