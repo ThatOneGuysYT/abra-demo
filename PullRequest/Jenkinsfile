@@ -1,13 +1,10 @@
 pipeline {
     agent any
-    node {
-        label any
-        customWorkspace '/PullRequest'
-    }
     stages {
         stage('install requirements') {
             steps {
                 sh '''
+                cd PullRequest
                 pip install -r requirements.txt --break-system-packages
                 '''
             }
@@ -15,6 +12,7 @@ pipeline {
         stage('check code') {
             steps {
                 sh '''
+                cd PullRequest
                 python3 -m pylint test_file.py
                 '''
             }
@@ -22,6 +20,7 @@ pipeline {
         stage('build') {
             steps {
                 sh '''
+                cd PullRequest
                 python3 test_file.py
                 '''
             }
@@ -29,6 +28,7 @@ pipeline {
         stage('TestAPI') {
             steps {
                 sh '''
+                cd PullRequest
                 python3 -m pytest
                 '''
             }
