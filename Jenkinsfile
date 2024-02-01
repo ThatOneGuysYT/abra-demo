@@ -7,14 +7,13 @@ pipeline {
                 sh 'pip install -r requirements.txt --break-system-packages'
             }
         }
-        /*stage('check code') {
+        stage('check code') {
             steps {
                 sh '''
-                python3 -m pylint test_file.py > ./pylint.log
-                cat pylint.log
+                python3 -m pylint test_file.py
                 '''
             }
-        }*/
+        }
         stage('build') {
             steps {
                 sh '''
