@@ -1,6 +1,9 @@
 pipeline {
     agent any
-    customWorkspace '/PullRequest'
+    node {
+        label any
+        customWorkspace '/PullRequest'
+    }
     stages {
         stage('install requirements') {
             steps {
