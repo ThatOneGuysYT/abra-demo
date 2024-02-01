@@ -10,7 +10,8 @@ pipeline {
         stage('check code') {
             steps {
                 sh '''
-                python3 pylint test_file.py
+                python3 -m pylint test_file.py > ./pylint.log
+                cat pylint.log
                 '''
             }
         }
