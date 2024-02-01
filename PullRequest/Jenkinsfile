@@ -4,28 +4,25 @@ pipeline {
     stages {
         stage('install requirements') {
             steps {
-                sh 'pip install -r ./requirements.txt --break-system-packages'
+                sh '''
+                cd PullRequest
+                pip install -r requirements.txt --break-system-packages
+                '''
             }
         }
         stage('check code') {
             steps {
-                sh '''
-                python3 -m pylint ./test_file.py
-                '''
+                sh 'python3 -m pylint test_file.py'
             }
         }
         stage('build') {
             steps {
-                sh '''
-                python3 ./test_file.py
-                '''
+                sh 'python3 test_file.py'
             }
         }
         stage('TestAPI') {
             steps {
-                sh '''
-                python3 -m pytest
-                '''
+                sh 'python3 -m pytest'
             }
         }
         /*stage('build container') {
