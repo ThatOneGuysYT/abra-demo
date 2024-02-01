@@ -10,8 +10,7 @@ pipeline {
         stage('check code') {
             steps {
                 sh '''
-                pip install pylint --break-system-packages
-                pylint test_file.py
+                python3 pylint test_file.py
                 '''
             }
         }
